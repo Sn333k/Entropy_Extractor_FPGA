@@ -4,9 +4,12 @@
 *.bgn
 *.drc
 *.lso
+*.map
+*.mrp
 *.ncd
 *.ngc
 *.ngd
+*.ngm
 *.ngo
 *.ngr
 *.pad
@@ -21,6 +24,7 @@
 *.twx
 *.unroutes
 *.ut
+*.xst
 *.xpi
 *.xrpt
 _xmsgs/
