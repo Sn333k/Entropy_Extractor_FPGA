@@ -1,3 +1,11 @@
+----------------------------------------------------------------------------------
+-- Create Date:    20/09/2026 
+-- Project Name:   Entropy Extractor
+-- Module Name:    usb_ctr
+-- Target Devices: XC6SLX45 (Spartan 6)
+-- Description:    UART Transmitter module acting as a communication controller 
+--                 for serial data transmission
+----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -6,17 +14,17 @@ entity usb_ctr is
     Port ( 
         clk       : in  STD_LOGIC;
         rst       : in  STD_LOGIC;
-        ctr_start : in  STD_LOGIC;
-        ctr_data  : in  STD_LOGIC_VECTOR(7 downto 0);
-        ctr_busy  : out STD_LOGIC;
-        ctr_out   : out STD_LOGIC
+        ctr_start : in  STD_LOGIC;	-- Impuls startowy zatrzaskujacy wejscie ctr_data
+        ctr_data  : in  STD_LOGIC_VECTOR(7 downto 0); -- Bajt wejsciowy
+        ctr_busy  : out STD_LOGIC;	-- Flaga zajetosci kontrolera
+        ctr_out   : out STD_LOGIC	-- Linia wyjsciowa Tx
     );
 end usb_ctr;
 
 architecture Behavioral of usb_ctr is
 
-    constant CLK_FREQ  : integer := 100_000_000; -- 100 MHz dla Spartan 6
-	constant BAUD_RATE : integer := 115_200;
+    constant CLK_FREQ  : integer := 100_000_000; -- Stale 100 MHz dla Spartan 6
+	constant BAUD_RATE : integer := 115_200; -- Parametry polaczenia COM
 	constant BIT_LIMIT : integer := CLK_FREQ / BAUD_RATE; -- 868 cykli
 
     type state_type is (IDLE, START_BIT, DATA_BITS, STOP_BIT);
@@ -29,8 +37,6 @@ architecture Behavioral of usb_ctr is
 begin
     process(clk, rst)
     begin
-       
-
         if rising_edge(clk) then
             case current_state is
                 -- STAN IDLE: Oczekiwanie na impuls ctr_start

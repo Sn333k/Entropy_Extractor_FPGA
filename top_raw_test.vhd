@@ -1,13 +1,23 @@
+----------------------------------------------------------------------------------
+-- Create Date:    20/09/2026 
+-- Project Name:   Entropy Extractor
+-- Module Name:    top_raw_test
+-- Target Devices: XC6SLX45 (Spartan 6)
+-- Description:    Temprorarily top-level test module for the Entropy Extractor project. 
+--                 This design integrates the True Random Number Generator 
+--                 (trng_source) with the UART transmission controller (usb_ctr) 
+--                 to continuously stream raw entropy bytes over a serial interface.
+----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity top_raw_test is
     Port ( 
-        clk     : in  STD_LOGIC; -- 100 MHz z Atlys (pin L15)
+        clk     : in  STD_LOGIC; -- Zegar
         rst     : in  STD_LOGIC; -- Przycisk resetu
-        ctr_out : out STD_LOGIC; -- Wyjscie szeregowe UART TX do FT232/PC
-		  rst_btn : out STD_LOGIC  
+        ctr_out : out STD_LOGIC; -- Wyjscie szeregowe UART TX
+		  rst_led : out STD_LOGIC  
     );
 end top_raw_test;
 
@@ -50,7 +60,7 @@ architecture Behavioral of top_raw_test is
     signal current_state : state_type := IDLE;
 
 begin
-	rst_btn<=rst;
+	rst_led<=rst;
     -- Podlaczenie generatora TRNG
     trng_inst : trng_source
         generic map (

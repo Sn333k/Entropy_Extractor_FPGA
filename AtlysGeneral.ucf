@@ -39,7 +39,7 @@ TIMESPEC TS_sys_clk_pin = PERIOD "sys_clk_pin" 100 MHz HIGH 50%;
  #NET "FlashMemDq<3>" LOC = "V14"; # Bank = 2, Pin name = IO_L12N_D2_MISO3_2, 		 Sch name = DQ3
 
 # onBoard Leds
- NET "rst_btn" LOC = "U18"; # Bank = 1, Pin name = IO_L52N_M1DQ15, 	   Sch name = LD0
+ NET "rst_led" LOC = "U18"; # Bank = 1, Pin name = IO_L52N_M1DQ15, 	   Sch name = LD0
  #NET "Led<1>" LOC = "M14"; # Bank = 1, Pin name = IO_L53P, 		 	   Sch name = LD1
  #NET "Led<2>" LOC = "N14"; # Bank = 1, Pin name = IO_L53N_VREF, 	   Sch name = LD2
  #NET "Led<3>" LOC = "L14"; # Bank = 1, Pin name = IO_L61P, 		 	   Sch name = LD3
