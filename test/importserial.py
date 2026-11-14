@@ -25,26 +25,20 @@ def capture_serial_split_files():
         
         while current_file_index <= MAX_FILES:
             if ser.in_waiting > 0:
-                # Obliczamy, ile bajtów brakuje do zapełnienia bieżącego pliku
                 space_left = BYTES_PER_FILE - bytes_in_current_file
-                
-                # Czytamy tylko tyle danych, ile mieści się w bieżącym pliku (lub tyle, ile jest w buforu)
                 to_read = min(ser.in_waiting, space_left)
                 raw_data = ser.read(to_read)
                 
                 if not raw_data:
                     continue
-                
-                # Nazwa pliku, np. dane_1.bin, dane_2.bin itd.
+
                 filename = f"dane_{current_file_index}.bin"
-                
-                # Zapis binarny w trybie dopisywania ('ab')
+
                 with open(filename, 'ab') as f:
                     f.write(raw_data)
                 
                 bytes_in_current_file += len(raw_data)
-                
-                # Wyświetlanie postępu w konsoli
+
                 sys.stdout.write(f"\r[Plik {current_file_index}/{MAX_FILES}] Zapisano: {bytes_in_current_file}/{BYTES_PER_FILE} bajtów")
                 sys.stdout.flush()
                 

@@ -42,3 +42,8 @@ xst/
 # Backup directories
 /_xmsgs/
 /ipcore_dir/_xco/
+
+# pliki testowe
+*.bin
+/test/falszywy_generator.py
+/test/raport_testow.txt
