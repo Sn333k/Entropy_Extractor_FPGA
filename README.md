@@ -8,7 +8,7 @@ Projekt realizowany w środowisku **Xilinx ISE 14.7**, którego celem jest imple
 
 Środowisko programistyczne: **Xilinx ISE Design Suite 14.7** (wraz z symulatorem ISim).
 
-Płytka docelowa:** Digilent Atlys** (FPGA Xilinx Spartan-6 XC6SLX45).
+Płytka docelowa: **Digilent Atlys** (FPGA Xilinx Spartan-6 XC6SLX45).
 
 Oprogramowanie pomocnicze: **Terminal szeregowy** (Terminal.exe) do odbioru danych przez USB.
 

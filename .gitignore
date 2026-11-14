@@ -1,4 +1,6 @@
 # Xilinx ISE generated files
+*.py
+*.bin
 *.bld
 *.bit
 *.bgn

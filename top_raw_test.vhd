@@ -86,7 +86,7 @@ begin
             ctr_out   => ctr_out
         );
 
-    -- Prosta maszyna stanów do obslugi wysylania bajtów
+    -- Tymczasowa prosta maszyna stanów do obslugi wysylania bajtow
     process(clk, rst)
     begin
         if rst = '1' then
@@ -97,14 +97,14 @@ begin
 
             case current_state is
                 when IDLE =>
-                    -- Czekamy az generator dostarczy nowy bajt i UART bedzie wolny
+                    -- Oczekiwanie az generator dostarczy nowy bajt i UART bedzie wolny
                     if data_ready = '1' and ctr_busy = '0' then
                         ctr_start     <= '1';
                         current_state <= SEND;
                     end if;
 
                 when SEND =>
-                    -- Czekamy na zakonczenie nadawania przez UART
+                    -- Oczekiwanie na zakonczenie nadawania przez UART
                     if ctr_busy = '0' then
                         current_state <= IDLE;
                     end if;
