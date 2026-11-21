@@ -6,6 +6,9 @@ from scipy.stats import chi2
 def non_overlapping_template_test(bit_array, template=None, m=9):
     if template is None:
         template = np.array([1, 1, 1, 1, 1, 1, 1, 1, 1], dtype=int)
+        #template = np.array([0, 0, 0], dtype=int)
+
+    
     
     n = len(bit_array)
     m = len(template)

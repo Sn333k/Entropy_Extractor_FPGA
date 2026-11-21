@@ -82,7 +82,7 @@ for ($i = 1; $i -le 10; $i++) {
             }
 
             $rowLine += "$formattedVal|"
-            if ($val -lt 1){
+            if ($val -gt 0.01){
                 Write-Host "$formattedVal" -NoNewline -ForegroundColor Green
                 
             }else{
